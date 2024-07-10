@@ -31,4 +31,4 @@ More details of the machine can be found from this [resource](https://www.crypto
    
 2. Here is a demo of the dencryption from the application,
    note that the same pluboard mappings, ringsettings,rotor offsets ,rotors,rotor order is used for the decryption.
-   ![](./gifs/dencoding.gif)
+   ![](./gifs/decoding.gif)
