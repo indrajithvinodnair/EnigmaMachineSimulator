@@ -1,8 +1,9 @@
-package com.wehrmacht.components;
+package com.wehrmacht.enigma.components;
 
-import com.wehrmacht.enums.FlowDirection;
-import com.wehrmacht.enums.RotorEnum;
-import com.wehrmacht.utils.EnigmaUtils;
+import com.wehrmacht.enigma.enums.RotorEnum;
+import com.wehrmacht.enigma.utils.EnigmaUtils;
+import com.wehrmacht.enigma.enums.FlowDirection;
+
 
 public class Rotor {
 
@@ -17,10 +18,10 @@ public class Rotor {
     // used for decoding
     int[] outputWiringAsIndexArray;
 
-    public Rotor(int ringSetting,int startingPosition, RotorEnum wiring, String id) {
-        this.ringSetting = ringSetting;
+    public Rotor(String ringSetting,String startingPosition, RotorEnum wiring, String id) {
+        this.ringSetting = Integer.parseInt(ringSetting);
         this.id = id;
-        this.position = startingPosition;
+        this.position = Integer.parseInt(startingPosition);
         createInputWirings(wiring);
     }
 
@@ -38,53 +39,15 @@ public class Rotor {
         this.notchPosition = EnigmaUtils.toAlphabetIndex(wiring.getNotch());
     }
 
-    public int getRingSetting() {
-        return ringSetting;
-    }
-
-    public void setRingSetting(int ringSetting) {
-        this.ringSetting = ringSetting;
-    }
-
     public int getPosition() {
         return position;
     }
 
-    public void setPosition(int position) {
-        this.position = position;
-    }
-
-    public int getNotchPosition() {
-        return notchPosition;
-    }
-
-    public void setNotchPosition(int notchPosition) {
-        this.notchPosition = notchPosition;
-    }
 
     public String getId() {
         return id;
     }
 
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public int[] getInputWiringAsIndexArray() {
-        return inputWiringAsIndexArray;
-    }
-
-    public void setInputWiringAsIndexArray(int[] inputWiringAsIndexArray) {
-        this.inputWiringAsIndexArray = inputWiringAsIndexArray;
-    }
-
-    public int[] getOutputWiringAsIndexArray() {
-        return outputWiringAsIndexArray;
-    }
-
-    public void setOutputWiringAsIndexArray(int[] outputWiringAsIndexArray) {
-        this.outputWiringAsIndexArray = outputWiringAsIndexArray;
-    }
 
     /**
      * increments offset position by 1 , simulating the rotation of the rings.
@@ -95,32 +58,29 @@ public class Rotor {
     }
 
 
-    private void reset() {
-        this.ringSetting = 0;
-        this.position = 0;
-    }
-
     public boolean isAtNotch(){
         return this.position == this.notchPosition;
     }
 
     /**
      * Encodes given character in right to left flow
-     * @param inputLetter
-     * @return
+     * @param inputLetter - letter to be encrypted
+     * @return output - encrypted letter
      */
     public char encodeRightToLeft(char inputLetter){
-        return EnigmaUtils.toChar(encode(inputLetter,FlowDirection.INPUT));
+        char output = EnigmaUtils.toChar(encode(inputLetter,FlowDirection.INPUT));
+        EnigmaUtils.logComponentOutput(id,position,inputLetter,output);
+        return output;
     }
 
     /**
      * Encodes given character in left to right flow
-     * @param inputLetter
-     * @return
+     * @param inputLetter - letter to be encrypted
+     * @return output - encrypted letter
      */
     public char encodeLeftToRight(char inputLetter){
         char output = EnigmaUtils.toChar(encode(inputLetter,FlowDirection.OUTPUT));
-        EnigmaUtils.logOutput(id,position,inputLetter,output);
+        EnigmaUtils.logComponentOutput(id,position,inputLetter,output);
         return output;
 
     }
@@ -138,7 +98,6 @@ public class Rotor {
         // wireMapping[(0 + 1 - 0 +26) % 26] = wireMapping[27%26] = wireMapping[1] = 10 => K (alphabet index - 1 since we start from 0, otherwise it would be 11 as 10 is J)
 
         int outboundLetterIndex = wireMapping[EnigmaUtils.normalizeToAlphabetBounds(letterIndex + shift)];
-//        System.out.println("letterIndex: " + letterIndex + ", ringSetting: " + ringSetting + ", position: " + position + ", shift = position - offset = " + shift + ", outboundIndex: " + outboundLetterIndex + ", normalizeToAlphabetBounds: " + EnigmaUtils.normalizeToAlphabetBounds(outboundLetterIndex - shift));
 
         // Sending the letter one shift below to the next rotor
         return EnigmaUtils.normalizeToAlphabetBounds(outboundLetterIndex - shift);

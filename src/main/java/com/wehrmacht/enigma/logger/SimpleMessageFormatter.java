@@ -1,4 +1,4 @@
-package com.wehrmacht.logging;
+package com.wehrmacht.enigma.logger;
 
 import java.util.logging.Formatter;
 import java.util.logging.LogRecord;
