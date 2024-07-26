@@ -54,6 +54,22 @@ public class EnigmaEncoderDecoderServiceImplTests {
 		EnigmaDataModel result = underTest.getEncryptedMessage(enigmaDataModel);
 
 		Assertions.assertEquals("OPGNDXKMJYTSBSPWWTRKRIWJE",result.getOutput());
+		Assertions.assertEquals(ReflectorEnum.REFLECTOR_B.getCode(),result.getReflectorCode().charAt(0));
+		Assertions.assertEquals(3,result.getRotors().size());
+		Assertions.assertEquals(plugBoardMappings,result.getPlugBoardMappings());
+		Assertions.assertEquals(input,result.getKeyboardInput());
+		Assertions.assertEquals("0",result.getRotors().get(0).getRingSetting());
+		Assertions.assertEquals("0",result.getRotors().get(1).getRingSetting());
+		Assertions.assertEquals("0",result.getRotors().get(2).getRingSetting());
+		Assertions.assertEquals("0",result.getRotors().get(0).getStartingIndex());
+		Assertions.assertEquals("1",result.getRotors().get(1).getStartingIndex());
+		Assertions.assertEquals("25",result.getRotors().get(2).getStartingIndex());
+		Assertions.assertEquals(LEFT_ROTOR,result.getRotors().get(0).getRotorPlacement());
+		Assertions.assertEquals(MIDDLE_ROTOR,result.getRotors().get(1).getRotorPlacement());
+		Assertions.assertEquals(RIGHT_ROTOR,result.getRotors().get(2).getRotorPlacement());
+		Assertions.assertEquals("I",result.getRotors().get(0).getRotorCode());
+		Assertions.assertEquals("II",result.getRotors().get(1).getRotorCode());
+		Assertions.assertEquals("III",result.getRotors().get(2).getRotorCode());
 	}
 
 	@Test
@@ -92,6 +108,25 @@ public class EnigmaEncoderDecoderServiceImplTests {
 
 		EnigmaDataModel result = underTest.getEncryptedMessage(enigmaDataModel);
 		Assertions.assertEquals("KCUBRBILSPYOBMPD",result.getOutput());
+		Assertions.assertEquals(ReflectorEnum.REFLECTOR_A.getCode(),result.getReflectorCode().charAt(0));
+		Assertions.assertEquals("0",result.getRotors().get(0).getStartingIndex());
+		Assertions.assertEquals("0",result.getRotors().get(1).getStartingIndex());
+		Assertions.assertEquals("16",result.getRotors().get(2).getStartingIndex());
+
+		Assertions.assertEquals(3,result.getRotors().size());
+		Assertions.assertEquals(plugBoardMappings,result.getPlugBoardMappings());
+		Assertions.assertEquals(input,result.getKeyboardInput());
+		Assertions.assertEquals("0",result.getRotors().get(0).getRingSetting());
+		Assertions.assertEquals("0",result.getRotors().get(1).getRingSetting());
+		Assertions.assertEquals("0",result.getRotors().get(2).getRingSetting());
+		Assertions.assertEquals(LEFT_ROTOR,result.getRotors().get(0).getRotorPlacement());
+		Assertions.assertEquals(MIDDLE_ROTOR,result.getRotors().get(1).getRotorPlacement());
+		Assertions.assertEquals(RIGHT_ROTOR,result.getRotors().get(2).getRotorPlacement());
+		Assertions.assertEquals("I",result.getRotors().get(0).getRotorCode());
+		Assertions.assertEquals("II",result.getRotors().get(1).getRotorCode());
+		Assertions.assertEquals("III",result.getRotors().get(2).getRotorCode());
+
+
 
 	}
 
@@ -132,6 +167,24 @@ public class EnigmaEncoderDecoderServiceImplTests {
 
 		EnigmaDataModel result = underTest.getEncryptedMessage(enigmaDataModel);
 		Assertions.assertEquals("BVELPZJLVTNKITZEQNS",result.getOutput());
+		Assertions.assertEquals(ReflectorEnum.REFLECTOR_A.getCode(),result.getReflectorCode().charAt(0));
+		Assertions.assertEquals("0",result.getRotors().get(0).getStartingIndex());
+		Assertions.assertEquals("0",result.getRotors().get(1).getStartingIndex());
+		Assertions.assertEquals("19",result.getRotors().get(2).getStartingIndex());
+
+
+		Assertions.assertEquals(3,result.getRotors().size());
+		Assertions.assertEquals(plugBoardMappings,result.getPlugBoardMappings());
+		Assertions.assertEquals(input,result.getKeyboardInput());
+		Assertions.assertEquals("25",result.getRotors().get(0).getRingSetting());
+		Assertions.assertEquals("0",result.getRotors().get(1).getRingSetting());
+		Assertions.assertEquals("25",result.getRotors().get(2).getRingSetting());
+		Assertions.assertEquals(LEFT_ROTOR,result.getRotors().get(0).getRotorPlacement());
+		Assertions.assertEquals(MIDDLE_ROTOR,result.getRotors().get(1).getRotorPlacement());
+		Assertions.assertEquals(RIGHT_ROTOR,result.getRotors().get(2).getRotorPlacement());
+		Assertions.assertEquals("I",result.getRotors().get(0).getRotorCode());
+		Assertions.assertEquals("II",result.getRotors().get(1).getRotorCode());
+		Assertions.assertEquals("III",result.getRotors().get(2).getRotorCode());
 	}
 
 	@Test
@@ -173,6 +226,25 @@ public class EnigmaEncoderDecoderServiceImplTests {
 
 		EnigmaDataModel result = underTest.getEncryptedMessage(enigmaDataModel);
 		Assertions.assertEquals("YPZLNRSMGNGXGQXBCK",result.getOutput());
+
+		Assertions.assertEquals(ReflectorEnum.REFLECTOR_A.getCode(),result.getReflectorCode().charAt(0));
+		Assertions.assertEquals("0",result.getRotors().get(0).getStartingIndex());
+		Assertions.assertEquals("1",result.getRotors().get(1).getStartingIndex());
+		Assertions.assertEquals("0",result.getRotors().get(2).getStartingIndex());
+
+
+		Assertions.assertEquals(3,result.getRotors().size());
+		Assertions.assertEquals(plugBoardMappings,result.getPlugBoardMappings());
+		Assertions.assertEquals(input,result.getKeyboardInput());
+		Assertions.assertEquals("25",result.getRotors().get(0).getRingSetting());
+		Assertions.assertEquals("0",result.getRotors().get(1).getRingSetting());
+		Assertions.assertEquals("25",result.getRotors().get(2).getRingSetting());
+		Assertions.assertEquals(LEFT_ROTOR,result.getRotors().get(0).getRotorPlacement());
+		Assertions.assertEquals(MIDDLE_ROTOR,result.getRotors().get(1).getRotorPlacement());
+		Assertions.assertEquals(RIGHT_ROTOR,result.getRotors().get(2).getRotorPlacement());
+		Assertions.assertEquals("I",result.getRotors().get(0).getRotorCode());
+		Assertions.assertEquals("II",result.getRotors().get(1).getRotorCode());
+		Assertions.assertEquals("III",result.getRotors().get(2).getRotorCode());
 	}
 
 	@Test
@@ -214,5 +286,24 @@ public class EnigmaEncoderDecoderServiceImplTests {
 
 		EnigmaDataModel result = underTest.getEncryptedMessage(enigmaDataModel);
 		Assertions.assertEquals("EJVSUFLVEACWLCMLVIJB",result.getOutput());
+
+		Assertions.assertEquals(ReflectorEnum.REFLECTOR_A.getCode(),result.getReflectorCode().charAt(0));
+		Assertions.assertEquals("0",result.getRotors().get(0).getStartingIndex());
+		Assertions.assertEquals("1",result.getRotors().get(1).getStartingIndex());
+		Assertions.assertEquals("2",result.getRotors().get(2).getStartingIndex());
+
+
+		Assertions.assertEquals(3,result.getRotors().size());
+		Assertions.assertEquals(plugBoardMappings,result.getPlugBoardMappings());
+		Assertions.assertEquals(input,result.getKeyboardInput());
+		Assertions.assertEquals("25",result.getRotors().get(0).getRingSetting());
+		Assertions.assertEquals("0",result.getRotors().get(1).getRingSetting());
+		Assertions.assertEquals("25",result.getRotors().get(2).getRingSetting());
+		Assertions.assertEquals(LEFT_ROTOR,result.getRotors().get(0).getRotorPlacement());
+		Assertions.assertEquals(MIDDLE_ROTOR,result.getRotors().get(1).getRotorPlacement());
+		Assertions.assertEquals(RIGHT_ROTOR,result.getRotors().get(2).getRotorPlacement());
+		Assertions.assertEquals("I",result.getRotors().get(0).getRotorCode());
+		Assertions.assertEquals("II",result.getRotors().get(1).getRotorCode());
+		Assertions.assertEquals("III",result.getRotors().get(2).getRotorCode());
 	}
 }
