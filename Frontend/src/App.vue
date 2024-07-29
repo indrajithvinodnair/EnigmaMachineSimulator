@@ -183,12 +183,8 @@ const updateInputsTillNow = (keyChar: AllowedAlphabet) => {
 
 // invoke the backend 
 const invokeBackend = async () => {
-  console.log('Invoking backend with the following configuration:');
-  console.log(JSON.stringify(state));
 
   let enigmaDataModel: EnigmaDataModel = mapStateDetailsToEnigmaDataModel();
-  console.log('EnigmaDataModel:', enigmaDataModel);
-
   try {
     const response = await axios.post('/encrypt', enigmaDataModel);
     // Handle the response data here

@@ -40,8 +40,10 @@ const handleEnterKey = (e: Event) => {
   if(!uiState.isInputDisabled) {
     window.alert('Please lock the settings first');
     return false
-  }
-  else {
+  }else if(state.keyboardInput.length == 0) {
+    window.alert('Please enter some text to encrypt/decrypt');
+    return false
+  }else {
     emit('invoke-backend');
     return true;
   }
