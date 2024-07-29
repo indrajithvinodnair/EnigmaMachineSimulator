@@ -18,8 +18,8 @@
         </p>
 
         <p>
-          You can find the source code of this project <a href="https://github.lsantos.dev/enigmajs"
-            target="_blank">here</a> with all the details and instructions, please leave a star if you liked it 🥰.
+          You can find the source code of this project <a href="https://github.com/indrajithvinodnair/EnigmaMachineSimulator"
+            target="_blank">here</a> with all the details and instructions.
         </p>
       </div>
     </div>
