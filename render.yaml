@@ -1,1 +1,26 @@
+services:
+  - type: web
+    name: frontend
+    env: static
+    buildCommand: "docker build -t frontend -f Frontend/Dockerfile ."
+    startCommand: "docker run -p 80:80 frontend"
+    envVars:
+      - key: PORT
+        value: 80
+    routes:
+      - type: http
+        source: /
+        destination: 80
 
+  - type: web
+    name: backend
+    env: static
+    buildCommand: "docker build -t backend -f Backend/Dockerfile ."
+    startCommand: "docker run -p 8080:8080 backend"
+    envVars:
+      - key: PORT
+        value: 8080
+    routes:
+      - type: http
+        source: /api
+        destination: 8080
