@@ -1,13 +1,13 @@
 services:
   - type: web
-  - runtime: docker
-  - name: enigma-frontend
-  - plan: free
-  - rootDir: Frontend
+    runtime: docker
+    name: enigma-frontend
+    plan: free
+    rootDir: Frontend
   
   - type: web
-  - runtime: docker
-  - name: enigma-backend
-  - plan: free
-  - rootDir: Backend
+    runtime: docker
+    name: enigma-backend
+    plan: free
+    rootDir: Backend
 
