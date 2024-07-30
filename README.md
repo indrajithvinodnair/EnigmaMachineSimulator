@@ -21,6 +21,7 @@ More details of the machine can be found from this [resource](https://www.crypto
 
 - Java 17 or higher
 - Maven (for dependency management)
+- Node > v18
 
 ### Running the app in your local
 If you have docker installed, you can get started right away by invoking docker-compose on the docker-compose.yml file.
