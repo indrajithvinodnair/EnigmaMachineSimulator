@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  backend:
+    build: ./Backend
+    ports:
+      - "8080:8080"
+    networks:
+      - enigma-encrypter-network
+
+  frontend:
+    build: ./Frontend
+    ports:
+      - "80:80"
+    networks:
+      - enigma-encrypter-network
+    depends_on:
+      - backend
+
+# Networks to be created to facilitate communication between containers
+networks:
+  enigma-encrypter-network:
+    driver: bridge
