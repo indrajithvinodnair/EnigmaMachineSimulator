@@ -19,16 +19,20 @@ More details of the machine can be found from this [resource](https://www.crypto
 
 ### Prerequisites
 
-- Java 8 or higher
+- Java 17 or higher
 - Maven (for dependency management)
 
+### Running the app in your local
+If you have docker installed, you can get started right away by invoking docker-compose on the docker-compose.yml file.
+If not and you wish to spin up the Frontend and Backend applications seperately, then you can do that but remember to modify the Backend's CORS
+allowed origins according to the port number of your FE app in the file Backend/src/main/java/com/wehrmacht/enigma/config/WebConfig.java.
 
-### Demo
+### Demo video
 
-1. Here is a demo of the encryption from the application
-   ![](./gifs/encoding.gif)
+Encryption Process - Sets up the rotors,ring settings, offsets and plugboard mappings
+![](./gifs/encryption.gif)
 
-   
-2. Here is a demo of the dencryption from the application,
-   note that the same pluboard mappings, ringsettings,rotor offsets ,rotors,rotor order is used for the decryption.
-   ![](./gifs/decoding.gif)
+
+
+Decryption Process - Uses the same configs used for the encryption process
+![](./gifs/decryption.gif)
