@@ -363,5 +363,7 @@ li.separator:first-child {
   background-image: url("@/assets/1920.JPG");
   background-repeat: no-repeat;
 }
-
+.wrapper .description {
+  padding-bottom:10px;
+}
 </style>
