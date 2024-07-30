@@ -7,10 +7,6 @@ services:
     envVars:
       - key: PORT
         value: 80
-    routes:
-      - type: http
-        source: /
-        destination: 80
 
   - type: web
     name: backend
@@ -20,7 +16,3 @@ services:
     envVars:
       - key: PORT
         value: 8080
-    routes:
-      - type: http
-        source: /api
-        destination: 8080
