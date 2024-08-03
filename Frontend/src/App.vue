@@ -105,7 +105,8 @@ import { provide, ref } from 'vue'
 import { EnigmaDataModel } from './enigma/EnigmaDataModel'
 import axios from 'axios';
 
-axios.defaults.baseURL = 'http://localhost:8080/wehrmacht/enigma';
+axios.defaults.baseURL = 'http://localhost:8080' || process.env.VUE_APP_BACKEND_URL;
+const serviceEndpoint = '/wehrmacht/enigma/encrypt';
 axios.defaults.headers.common['Content-Type'] = 'application/json';
 
 /**
@@ -186,7 +187,7 @@ const invokeBackend = async () => {
 
   let enigmaDataModel: EnigmaDataModel = mapStateDetailsToEnigmaDataModel();
   try {
-    const response = await axios.post('/encrypt', enigmaDataModel);
+    const response = await axios.post(serviceEndpoint, enigmaDataModel);
     // Handle the response data here
     mapEnigmaDataModelToState(response.data);
   } catch (error) {
