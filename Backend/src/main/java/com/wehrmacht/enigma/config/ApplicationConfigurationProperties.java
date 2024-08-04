@@ -16,10 +16,4 @@ public class ApplicationConfigurationProperties {
     public void setAppFrontendUrl(String appFrontendUrl) {
         this.appFrontendUrl = appFrontendUrl;
     }
-
-
-    @PostConstruct
-    public void postConstruct() {
-        System.out.println("Allowed Origins: " + appFrontendUrl);
-    }
 }
