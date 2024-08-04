@@ -212,3 +212,6 @@ Frontend/.pnp.*
 .nfs*
 
 .vercel
+
+# Backend compiled classes
+Backend/target/
