@@ -1,5 +1,6 @@
 package com.wehrmacht.enigma.config;
 
+import jakarta.annotation.PostConstruct;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 
@@ -14,5 +15,11 @@ public class ApplicationConfigurationProperties {
 
     public void setAppFrontendUrl(String appFrontendUrl) {
         this.appFrontendUrl = appFrontendUrl;
+    }
+
+
+    @PostConstruct
+    public void postConstruct() {
+        System.out.println("Allowed Origins: " + appFrontendUrl);
     }
 }
