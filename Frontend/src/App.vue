@@ -105,7 +105,8 @@ import { provide, ref } from 'vue'
 import { EnigmaDataModel } from './enigma/EnigmaDataModel'
 import axios from 'axios';
 
-axios.defaults.baseURL = 'http://localhost:8080' || process.env.VUE_APP_BACKEND_URL;
+console.log(import.meta.env)
+axios.defaults.baseURL =  import.meta.env.VITE_BACKEND_URL;
 const serviceEndpoint = '/wehrmacht/enigma/encrypt';
 axios.defaults.headers.common['Content-Type'] = 'application/json';
 

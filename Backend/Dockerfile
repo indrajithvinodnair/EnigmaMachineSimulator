@@ -17,7 +17,7 @@ COPY --from=build /app/target/*.jar enigma.jar
 # Expose the port
 EXPOSE 8080
 # Run the application
-CMD ["java", "-jar", "enigma.jar"]
+CMD ["java","-Dspring.profiles.active=production","-jar", "enigma.jar"]
 
 
 
