@@ -106,7 +106,7 @@ import { EnigmaDataModel } from './enigma/EnigmaDataModel'
 import axios from 'axios';
 
 console.log(import.meta.env)
-axios.defaults.baseURL =  import.meta.env.VITE_APP_BACKEND_URL;
+axios.defaults.baseURL =  import.meta.env.VITE_BACKEND_URL;
 const serviceEndpoint = '/wehrmacht/enigma/encrypt';
 axios.defaults.headers.common['Content-Type'] = 'application/json';
 
