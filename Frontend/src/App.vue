@@ -279,10 +279,6 @@ function mapEnigmaDataModelToState(enigmaDataModel: EnigmaDataModel) {
     turnOnLampboard(enigmaDataModel.output.charAt(i) as AllowedAlphabet);
   }
 }
-
-function created(p0: () => void) {
-  throw new Error('Function not implemented.')
-}
 </script>
 
 <style>
