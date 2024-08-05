@@ -104,12 +104,11 @@ import { Reflector, Reflectors } from './enigma/Reflector'
 import { provide, ref } from 'vue'
 import { EnigmaDataModel } from './enigma/EnigmaDataModel'
 import axios from 'axios';
+import { onMounted } from 'vue'
 
-console.log(import.meta.env)
 axios.defaults.baseURL =  import.meta.env.VITE_BACKEND_URL;
-const serviceEndpoint = '/wehrmacht/enigma/encrypt';
+const serviceEndpoint = '/wehrmacht/enigma';
 axios.defaults.headers.common['Content-Type'] = 'application/json';
-
 /**
  * The global state approach is not the best option in the case of any app
  * however, since this is a single machine I could chose from two options:
@@ -163,6 +162,14 @@ const state = reactive<GlobalState>({
   steps: []
 })
 
+/*
+This is used to wake up the backend service when the frontend is loaded.
+The more details on why its required is mentioned in the backend's resource
+*/
+onMounted(() => {
+  checkBackendHeartBeat()
+})
+
 // REFS AND VARIABLES
 
 provide('state', state)
@@ -188,7 +195,7 @@ const invokeBackend = async () => {
 
   let enigmaDataModel: EnigmaDataModel = mapStateDetailsToEnigmaDataModel();
   try {
-    const response = await axios.post(serviceEndpoint, enigmaDataModel);
+    const response = await axios.post(serviceEndpoint+'/encrypt', enigmaDataModel);
     // Handle the response data here
     mapEnigmaDataModelToState(response.data);
   } catch (error) {
@@ -197,6 +204,14 @@ const invokeBackend = async () => {
   }
 }
 
+const checkBackendHeartBeat = async () => {
+  try {
+    const response = await axios.get(serviceEndpoint+'/heartbeat');
+    console.log('Backend is up and running:', response.data);
+  } catch (error) {
+    console.error('Error checking backend health:', error);
+  }
+}
 
 // throttling the turn off of the lamp to make it look more realistic
 let timeoutClock: number | null = null
@@ -263,6 +278,10 @@ function mapEnigmaDataModelToState(enigmaDataModel: EnigmaDataModel) {
   for (let i = 0; i < enigmaDataModel.output.length; i++) {
     turnOnLampboard(enigmaDataModel.output.charAt(i) as AllowedAlphabet);
   }
+}
+
+function created(p0: () => void) {
+  throw new Error('Function not implemented.')
 }
 </script>
 
